@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../../static/index/css/main.css">
+    <link rel="stylesheet" href="../../../../static/index/css/swiper.css">
+    <link rel="stylesheet" href="../../../../static/index/css/font.css">
+    <link rel="stylesheet" href="../../../../static/index/layui/css/layui.css?t=1598935358940" media="all">
+    <title>分析图表</title>
+</head>
+
+
+
+<body style="background-color:#F1F1F1">
+ {% for image in images %}
+ <ul>
+     <li style="text-align: center"><img src="{{image}}" alt=""></li>
+ </ul>
+ {% endfor %}
+
+
+</div>
+
+</body>
+
+<script src="../../../../static/index/js/jquery.js"></script>
+<script src="../../../../static/index/js/swiper.js"></script>
+<script src="../../../../static/index/layui/layui.js"></script>
+<script>
+    function goForward() {
+        window.history.back()
+    }
+
+
+
+    $(function () {
+        time = timeChange($(".time").text());
+        $(".time").text(time)
+    });
+
+    function timeChange(time) {
+        time = parseInt(time + '000')
+        var date = new Date(time);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var D = date.getDate() + ' ';
+        var h = date.getHours() + ':';
+        var m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':';
+        var s = date.getSeconds();
+        return Y + M + D + h + m + s;
+    }
+</script>
+</html>

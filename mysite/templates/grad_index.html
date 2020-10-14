@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../../static/index/css/main.css">
+    <link rel="stylesheet" href="../../../../static/index/css/swiper.css">
+    <link rel="stylesheet" href="../../../../static/index/css/font.css">
+    <link rel="stylesheet" href="../../../../static/index/layui/css/layui.css?t=1598935358940" media="all">
+    <title>{{type_name}}</title>
+</head>
+
+
+
+<body>
+<image src="../../../../static/index/img/backgroung.jpg" style="width: 100%;background-size: cover;filter: blur(40px); z-index:1;position: fixed;left:0;right:0;top:0;bottom:0"/>
+<div style="position:absolute;top:0;bottom:0;right:0;left:0;z-index: 2">
+<div class="layui-btn-group demoTable" style="margin: 20px;">
+    <button onclick="goForward()" class="layui-btn" data-type="parseTable">返回上一页</button>
+</div>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>开始爬取{{type_name}}</legend><div id="status" style="margin-left:30px;margin-top:10px">{{status_msg}}</div>
+</fieldset>
+
+
+<form class="layui-form" action="" style="margin-left: 30%">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">爬取的岗位</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" style="box-shadow: 1px 1px 10px white;width:30%" required lay-verify="required" placeholder="请输入标题（必填）" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">爬取的网站</label>
+        <div class="layui-input-block">
+            <input type="radio" name="type" value="{{type_id}}" title="{{type_name}}" checked>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <textarea name="record_name" style="box-shadow: 1px 1px 10px white;width:60%" required lay-verify="required" placeholder="请输入备注（必填）"
+                      class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</div>
+
+</body>
+
+<script src="../../../../static/index/js/jquery.js"></script>
+<script src="../../../../static/index/js/swiper.js"></script>
+<script src="../../../../static/index/layui/layui.js"></script>
+<script>
+    function goForward() {
+        window.history.back()
+    }
+
+
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+             if(data.field.type==1){
+                 url="../grad_action";
+             }else if(data.field.type==2){
+                 url="../lagou_action";
+             }else  if(data.field.type==3){
+                 url="../qiancheng_action";
+             }
+
+               layer.confirm('是否确定爬取 <b style="color: green">'+data.field.title+'</b> 的岗位数据', {
+              btn: [ '确定'] //可以无限个按
+            }, function(index){
+               $.get(url, {
+                'work_name': data.field.title,
+                'type': data.field.type,
+                'record_name': data.field.record_name
+            }, function (data) {
+                if(data==1){
+                    // layer.close(layer.load(3));
+                    layer.msg('爬取成功',{icon: 1});
+                }else if(data==2){
+                    layer.msg('爬取异常，请稍后重试',{icon: 2});
+                }else if(data==-1){
+                    layer.msg('有任务在进行',{icon: 2});
+                }
+
+            });
+                layer.msg("爬取正在进行,请耐心等候",{icon: 1});
+                $("#status").html('有任务在进行中');
+            });
+
+
+            return false;
+        });
+    });
+
+
+    $(function () {
+        time = timeChange($(".time").text());
+        $(".time").text(time)
+    });
+
+    function timeChange(time) {
+        time = parseInt(time + '000')
+        var date = new Date(time);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var D = date.getDate() + ' ';
+        var h = date.getHours() + ':';
+        var m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':';
+        var s = date.getSeconds();
+        return Y + M + D + h + m + s;
+    }
+</script>
+</html>

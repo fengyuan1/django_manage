@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/index/css/main.css">
+    <link rel="stylesheet" href="../../static/index/css/swiper.css">
+    <link rel="stylesheet" href="../../static/index/css/font.css">
+    <link rel="stylesheet" href="../../static/index/layui/css/layui.css?t=1598935358940" media="all">
+    <title>{{type_name}}</title>
+</head>
+<body style="background-color:#F1F1F1">
+<div class="layui-btn-group demoTable" style="margin: 20px;">
+    <button onclick="goForward()" class="layui-btn" data-type="parseTable">返回上一页</button>
+</div>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>{{type_name}}</legend>
+</fieldset>
+<div class="layui-form">
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th style="text-align: center">记录id</th>
+            <th style="text-align: center">记录名称</th>
+            <th style="text-align: center">记录日期</th>
+            <th style="text-align: center">选项</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for article in allarticle %}
+            <tr>
+            <td style="text-align: center">{{ article.id }}</td>
+            <td style="text-align: center">{{ article.record_name }}</td>
+            <td class="time" id="time_{{ article.id }}" style="text-align: center">{{ article.date }}</td>
+            <td style="text-align: center">
+                <a href="recruit_index/{{type_id}}/{{ article.id }}">
+                <button type="button" class="layui-btn">抓取的数据</button>
+                </a>
+                 <a href="../download_action/{{type_id}}/{{ article.id }}">
+                <button type="button" class="layui-btn">下载数据</button>
+                </a>
+                 <a href="../mate_action/{{type_id}}/{{ article.id }}" onclick="run()">
+                <button type="button" class="layui-btn">查看数据分析图</button>
+                </a>
+            </td>
+                </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="../../static/index/js/jquery.js"></script>
+<script src="../../static/index/js/swiper.js"></script>
+<script src="../../static/index/layui/layui.all.js?t=1598935358940"></script>
+<script>
+    
+    function run() {
+        layer.load(3)
+    }
+    
+    function goForward() {
+        window.history.back()
+    }
+
+    url="../mate_action";
+    function mateAction(article_id){
+     $.get(url, {
+        'record_id': article_id,
+        'type': '{{type_id}}',
+     }, function (data) {
+         if(data==1){
+          layer.msg('生成成功', {icon: 1});
+         }
+     })
+    }
+
+    $(function () {
+        con = $('.time').each(function () {
+            id = $(this).attr("id")
+            $("#" + id).text(timeChange($(this).text()))
+        })
+    })
+
+    function timeChange(time) {
+        time = parseInt(time + '000')
+        var date = new Date(time);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var D = date.getDate() + ' ';
+        var h = date.getHours() + ':';
+        var m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':';
+        var s = date.getSeconds();
+        return Y + M + D + h + m + s;
+    }
+</script>
+</html>

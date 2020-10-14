@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>爬虫机器人——首页</title>
+		<link rel="stylesheet" href="../../static/index/css/main.css">
+		<link rel="stylesheet" href="../../static/index/css/swiper.css">
+		<link rel="stylesheet" href="../../static/index/css/font.css">
+
+
+	</head>
+	<body onload="test()" style="background-color:#F1F1F1">
+		<div class="toolbar">
+			<a href="#" class="toolbar-item toolbar-item-weixin">
+				<span class="toolbar-layer"></span>
+			</a>
+			<a href="#" class="toolbar-item toolbar-item-feedback"></a>
+			<a href="#" class="toolbar-item toolbar-item-app">
+				<span class="toolbar-layer"></span>
+			</a>
+		</div>
+		<div class="banner">
+			<div class='header'>
+				<ul>
+					<li><a href="#">首页</a></li>
+					<a href="../recruit_view/1"><li>猎聘网</li></a>
+					<a href="../recruit_view/2"><li>拉勾网</li></a>
+					<a href="../recruit_view/3"><li>前程无忧网</li></a>
+					<a href="../../admin"><li>后台管理</li></a>
+				</ul>
+			</div>
+		    <div class="swiper-container" id="swp1">
+			    <div class="swiper-wrapper">
+			        <div class="swiper-slide">
+			          	<img src="../../static/index/img/big2.jpg">
+			        </div>
+			        <div class="swiper-slide">
+			          	<img src="../../static/index/img/big3.jpg">
+			        </div>
+		      	</div>
+		      	<!-- 如果需要分页器 -->
+		      	<div class="swiper-pagination "></div>
+		      	<!-- 如果需要导航按钮 -->
+		      	<div class="swiper-button-prev  swiper-button-white"></div>
+		      	<div class="swiper-button-next  swiper-button-white"></div>
+		    </div>
+		    <div class='textspan'>
+		    	<div class="continer">
+		    	<span class="head-text">
+		    		<p>从海量数据中挖掘价值如此简单</p>
+		    		<p class="head-text2">——轻轻点点手指头的功夫</p>
+		    	</span>
+		    </div>
+		    </div>
+		</div>
+
+		<div class="lineshow">
+			<div class="continer">
+				<h1>选择我们——回馈给你最新的职位信息</h1>
+			<a href="../grad_view/1">
+				<div class="firstpicture">
+					<div class="imgbox">
+						<img style="width:240px" src="../../static/index/img/liepin.png">
+					</div>
+					<div class="text-under">
+						<p class='p1'>猎聘网</p>
+						<p class='p2'>建立企业、猎头和职场人的三方互动，为求职者提供海量高薪职位、猎头服务，让求职者快速拿到offer</p>
+						<p class='p3'>平台覆盖互联网、金融、房地产、汽车制造等主流热门行业，让您更快获得工作机会。</p>
+					</div>
+				</div>
+			</a>
+			<a href="../grad_view/2">
+				<div class="afterpicture">
+					<div class="imgbox">
+						<img style="width:240px" src="../../static/index/img/lagou.png">
+					</div>
+					<div class="text-under">
+						<p class='p1'>拉勾网</p>
+						<p class='p2'>拉勾招聘，汇聚互联网行业名企，为求职者提供更精准的高薪职位推荐。一键注册填简历，查看高薪互联网职位</p>
+						<p class='p3'>一键注册填简历，查看高薪互联网职位</p>
+					</div>
+				</div>
+			</a>
+			<a href="../grad_view/3">
+				<div class="afterpicture">
+					<div class="imgbox">
+						<img style="width:270px" src="../../static/index/img/qiancheng.jpg">
+					</div>
+					<div class="text-under">
+						<p class='p1'>前程无忧网</p>
+						<p class='p2'>提供报纸招聘、网络招聘、招聘猎头、培训测评和人事外包在内的人力资源服务，最初全国包括香港在内的26个城市设有服务机构，至今已经增加至104个城市。</p>
+						<p class='p3'>中国领先的专业招聘网站，经第三方监测机构iResearch 等调查，连续多年市场占有率第一</p>
+				</div>
+			</div>
+			</a>
+		</div>
+		</div>
+
+			<script src="../../static/index/js/jquery.js"></script>
+			<script src="../../static/index/js/swiper.js"></script>
+			<script>{
+			    var swiper1 = new Swiper('#swp1', {
+			        // 如果需要分页器
+			  	    pagination: {
+			          	el: '.swiper-pagination',
+			          	type: 'progressbar',
+			        },
+			        // 如果需要前进后退按钮
+			        navigation: {
+			          	nextEl: '.swiper-button-next',
+			          	prevEl: '.swiper-button-prev',
+			        },
+			        autoplay: {
+			          	disableOnInteraction: false,
+			        },
+			        	effect: 'fade',
+			        	speed: 800
+			      })
+		   }
+			</script>
+			<script>
+				function planeshow(){
+					var i=Math.ceil(Math.random()*8);
+					b=$('#plane'+i);
+					a=document.getElementById("plane"+i);
+					if(a.style.visibility=='hidden'){
+						b.fadeIn(2000);
+						b.fadeIn(2000);
+					}
+					else{
+						b.fadeOut(2000);
+						b.fadeIn(2000);
+					}
+				}
+				var num = 10;
+				function test() {
+				    if(num < 0) {    //函数结束条件
+				        clearTimeout(t);
+				        return;
+				    }
+				    planeshow();  //函数主体内容
+				    t = setTimeout("test()", 1000); //单位是毫秒
+				}
+
+			</script>
+			<script>
+		$(function(){
+			$("body").click(function(e){
+				// 创建div父元素
+				var parentDiv = $("<div></div>");
+				// 设置属性
+				parentDiv.css({
+					"width":"20px",
+					"height":"20px",
+					"position":"absolute",
+					"z-index":"10000"
+				});
+				// 创建一个div容器元素
+				var conDiv = $("<div></div>");
+				conDiv.css({
+					"width":"100%",
+					"height":"100%",
+					"position":"relative"
+				});
+				// 将容器元素添加到父元素中
+				parentDiv.append(conDiv);
+				// 创建子元素
+				var childDiv = conDiv.append("<div></div><div></div><div></div>");
+				var divs = conDiv.children();
+				// 设置颜色随机
+				var color = "rgb("+parseInt(Math.random()*250+5)
+							+","+parseInt(Math.random()*250+5)
+							+","+parseInt(Math.random()*250+5)+")";
+				// 设置子元素属性
+				$(divs[0]).css({
+					"width":"60%",
+					"height":"60%",
+					"background-color":color,
+					"border-radius":"100%"
+				});
+				$(divs[1]).css({
+					"width":"60%",
+					"height":"60%",
+					"background-color":color,
+					"border-radius":"100%",
+					"position":"absolute",
+					"top":"0",
+					"right":"0"
+				});
+				$(divs[2]).css({
+					"width":"60%",
+					"height":"60%",
+					"background-color":color,
+					"position":"absolute",
+					"top":"20%",
+					"left":"20%",
+					"transform":"rotate(45deg)",
+					"-ms-transform":"rotate(45deg)",
+					"-webkit-transform":"rotate(45deg)"
+				});
+				// 通过事件对象获取鼠标坐标
+				var x = e.pageX;
+				var y = e.pageY;
+				// 修改div父元素位置
+				parentDiv.css({"left":x+"px","top":y+"px"});
+				// 添加到body中
+				$("body").append(parentDiv);
+				// 2秒后消失
+				parentDiv.animate({
+					"width":"25px",
+					"height":"25px",
+					"top":(y-200)+"px",
+					"opacity":0
+				},2000,function(){
+					parentDiv.remove();
+				});
+			});
+		});
+	</script>
+	<script type="text/javascript" src="../../static/index/js/jquery-3.3.1.min.js"></script>
+
+	</body>
+</html>
