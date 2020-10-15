@@ -48,11 +48,11 @@ def liepin_action(record_id):
 
 
         # 显示横轴标签
-        plt.xlabel("频数")
+        plt.xlabel("frequency")
         # 显示纵轴标签
-        plt.ylabel("薪酬区间")
+        plt.ylabel("salary range")
         # 显示图标题
-        plt.title(y+"经验薪酬频数分布直方图")
+        plt.title(y+" years work experience Salary frequency distribution histogram")
         buffer = BytesIO()
         plt.savefig(buffer)
         plot_data = buffer.getvalue()
@@ -87,11 +87,11 @@ def lagou_action(record_id):
         plt.xlim(0, 35)
 
         # 显示横轴标签
-        plt.xlabel("频数")
+        plt.xlabel("frequency")
         # 显示纵轴标签
-        plt.ylabel("薪酬区间")
+        plt.ylabel("salary range")
         # 显示图标题
-        plt.title(y + "经验薪酬频数分布直方图")
+        plt.title(y + " years work experience Salary frequency distribution histogram")
         buffer = BytesIO()
         plt.savefig(buffer)
         plot_data = buffer.getvalue()
@@ -123,11 +123,11 @@ def qiancheng(record_id):
         plt.xlim(0, 60)
 
         # 显示横轴标签
-        plt.xlabel("频数")
+        plt.xlabel("frequency")
         # 显示纵轴标签
-        plt.ylabel("薪酬区间")
+        plt.ylabel("salary range")
         # 显示图标题
-        plt.title(y + "经验薪酬频数分布直方图")
+        plt.title(y + " years work experience Salary frequency distribution histogram")
         buffer = BytesIO()
         plt.savefig(buffer)
         plot_data = buffer.getvalue()

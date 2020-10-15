@@ -26,7 +26,7 @@ SECRET_KEY = 'fxppecy9e&ix&5o3z+vze(vtw31#)18!k9s7_4g%yw@7)ipw^r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 SIMPLEUI_STATIC_OFFLINE = True
