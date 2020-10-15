@@ -51,8 +51,27 @@ def liepin_action(record_id):
         plt.xlabel("frequency")
         # 显示纵轴标签
         plt.ylabel("salary range")
+
+        # 中英文转换
+        if (y == '1-3年'):
+            y = '1-3 years'
+        elif (y == '3-5年'):
+            y = '3-5 years'
+        elif (y == '经验不限'):
+            y = 'no limit years'
+        elif (y == '5-10年'):
+            y = '5-10 years'
+        elif (y == '在校/应届'):
+            y = 'trainee'
+        elif (y == '一年以下'):
+            y = 'under 1 years'
+        elif (y == '10年以下'):
+            y = 'under 10 year'
+        elif (y == '10年以上'):
+            y = 'over 10 year'
+
         # 显示图标题
-        plt.title(y+" years work experience Salary frequency distribution histogram")
+        plt.title(y+" work experience Salary frequency distribution histogram")
         buffer = BytesIO()
         plt.savefig(buffer)
         plot_data = buffer.getvalue()
@@ -90,8 +109,26 @@ def lagou_action(record_id):
         plt.xlabel("frequency")
         # 显示纵轴标签
         plt.ylabel("salary range")
+        # 中英文转换
+        if(y=='1-3年'):
+            y='1-3 years'
+        elif(y=='3-5年'):
+            y = '3-5 years'
+        elif(y=='不限'):
+            y = 'no limit years'
+        elif (y == '5-10年'):
+            y = '5-10 years'
+        elif (y == '在校/应届'):
+            y = 'trainee'
+        elif (y == '1年以下'):
+            y = 'under 1 years'
+        elif (y == '10年以下'):
+            y = 'under 10 year'
+        elif (y == '10年以上'):
+            y = 'over 10 year'
+
         # 显示图标题
-        plt.title(y + " years work experience Salary frequency distribution histogram")
+        plt.title(y + " work experience Salary frequency distribution histogram")
         buffer = BytesIO()
         plt.savefig(buffer)
         plot_data = buffer.getvalue()
@@ -126,8 +163,29 @@ def qiancheng(record_id):
         plt.xlabel("frequency")
         # 显示纵轴标签
         plt.ylabel("salary range")
+
+        # 中英文转换
+        if (y == '1年经验'):
+            y = '1 years'
+        elif (y == '3-4年经验'):
+            y = '3-4 years'
+        elif (y == '无需经验'):
+            y = 'no limit years'
+        elif (y == '不限'):
+            y = 'no limit years'
+        elif (y == '5-7年经验'):
+            y = '5-7 years'
+        elif (y == '在校/应届'):
+            y = 'trainee'
+        elif (y == '8-9年经验'):
+            y = '8-9 years'
+        elif (y == '2年经验'):
+            y = '2 year'
+        elif (y == '10年以上经验'):
+            y = 'over 10 year'
+
         # 显示图标题
-        plt.title(y + " years work experience Salary frequency distribution histogram")
+        plt.title(y + " work experience Salary frequency distribution histogram")
         buffer = BytesIO()
         plt.savefig(buffer)
         plot_data = buffer.getvalue()
