@@ -111,7 +111,15 @@ def qiancheng_action(i,sleep_count,work_name,cate_id,record_id):
                 year=attribute_text[1]
             else:
                 year='不限'
+            # 整理学历背景
+            for a in attribute_text:
+                if (a == '大专' or a == '本科' or a == '中专' or a == '高中' or a == '硕士'):
+                    edu = a
+                else:
+                    edu = '未知'
 
+
+            # 整理金额
             if(money!=''):
                 try:
                     salary=money.split('-')[1][-3:]
@@ -126,7 +134,7 @@ def qiancheng_action(i,sleep_count,work_name,cate_id,record_id):
             else:
                 salary_money=0
 
-            qiancheng = models.Qiancheng(work=work, create_time=int(time.time()), edu=str(attribute_text), compensation=money
+            qiancheng = models.Qiancheng(work=work, create_time=int(time.time()), edu=edu, compensation=money
             , record_id=record_id, work_type_id=cate_id, company=company, year=year,district=address,salary=salary_money)
             qiancheng.save()
 

@@ -12,9 +12,15 @@
 
 
 <body style="background-color:#F1F1F1">
- {% for image in images %}
+ {% for data in all_data %}
  <ul>
-     <li style="text-align: center"><img src="{{image}}" alt=""></li>
+     <li style="text-align: center"><img src="{{data.analyse_data}}" alt=""></li>&nbsp
+     <li style="text-align: center;font-size: 17px">statistics data</li>
+     <span style="margin-left: 25%;font-size: 17px">median : {{data.median}}</span>
+     <span style="margin-left: 25%;font-size: 17px">&nbsp&nbspquartile : {{data.quartile}}</span><br /><br />
+     <span style="margin-left: 25%;font-size: 17px">eight_bit : {{data.eight_bit}}</span>
+     <span style="margin-left: 25%;font-size: 17px">sixteen_bit : {{data.sixteen_bit}}</span>
+     <li style="text-align: center">&nbsp</li>
  </ul>
  {% endfor %}
 
