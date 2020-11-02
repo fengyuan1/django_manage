@@ -88,7 +88,10 @@ def liepin_action(i,sleep_count,work_name,cate_id,record_id):
     out_data = []
 
     for x in range(0, len(list_r)):
-        address = ''
+        try:
+            address = list_r[x].find("a", class_='area').get_text().strip()
+        except BaseException:
+            address = ''
         work = list_r[x].find("a").get_text().strip()
         edu = list_r[x].find("span", class_='edu').get_text().strip()
         year = list_r[x].find("span", class_='edu').find_next_sibling("span").get_text().strip()
