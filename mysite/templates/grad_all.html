@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>爬虫小助手</title>
+     <link rel="stylesheet" href="../../../../static/index/css/main.css">
+    <link rel="stylesheet" href="../../../../static/index/css/swiper.css">
+    <link rel="stylesheet" href="../../../../static/index/css/font.css">
+    <link rel="stylesheet" href="../../../../static/index/layui/css/layui.css?t=1598935358940" media="all">
+</head>
+<body style="background-color: #a0cfff;margin-top: 10%;height: 100%">
+
+<div style="margin-left: 14%;text-align:center;width: 60em">
+<p style="font-size: 2.5em">请输入需要爬取的岗位信息</p><br/><br/>
+    <form class="layui-form" action="" style="margin-left: 20%">
+
+
+        <label class="layui-form-label" style="font-size: 2ex;margin-left:-11ex;">爬取的岗位</label>
+        <div class="layui-input-block" style="width: 32em">
+            <input type="text" name="title" width="8ex !important" style="margin-left:-9ex;box-shadow: 1px 1px 10px white" required lay-verify="required" placeholder="请输入标题（必填）" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <br />
+
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label" style="margin-left:-11ex;font-size: 2ex">备注</label>
+        <div class="layui-input-block" style="width: 32em">
+            <textarea name="record_name" width="8ex !important" style="margin-left:-9ex;" lay-verify="required" placeholder="请输入备注（必填）"
+                      class="layui-textarea"></textarea>
+        </div>
+    </div>
+        <br />
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</div>
+
+</body>
+<script src="../../../../static/index/js/jquery.js"></script>
+<script src="../../../../static/index/js/swiper.js"></script>
+<script src="../../../../static/index/layui/layui.js"></script>
+</html>

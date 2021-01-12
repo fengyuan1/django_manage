@@ -15,7 +15,7 @@ Including another URLconf
 """
 
 from django.urls import path
-from . import views,recruit_view,grad_view,grad_action,lagou_action,qiancheng_action,download_action,mate_action
+from . import views,recruit_view,grad_view,grad_action,lagou_action,qiancheng_action,download_action,mate_action,grad_all
 
 urlpatterns = [
     path("index/",views.index, name='index' ),
@@ -27,5 +27,5 @@ urlpatterns = [
     path("lagou_action/", lagou_action.grad_action, name='index'),
     path("qiancheng_action/", qiancheng_action.grad_action, name='index'),
     path("mate_action/<int:type_id>/<int:record_id>", mate_action.mate_action, name='index'),
-
+    path("grad_all/",grad_all.grad_all_view,name='index')
 ]
