@@ -46,12 +46,27 @@
                       class="layui-textarea"></textarea>
         </div>
     </div>
+       <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">网站cookie（拉钩必须）</label>
+        <div class="layui-input-block">
+            <input name="cookie" style="box-shadow: 1px 1px 10px white;width:60%"  placeholder="请输入网站cookie" class="layui-textarea">
+        </div>
+    </div>
+
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
+    <br />
+     <h2 style="margin-left: 20%">拉勾网获取cookie的方法如下：</h2>
+    <br />
+        <p style="margin-left: 10%">第一步: 点击链接： <a href="https://www.lagou.com/" target="_blank">https://www.lagou.com/</a></p><br>
+        <p style="margin-left: 10%">第二步：登录自己的拉钩账号</p><br>
+        <p style="margin-left: 10%">第三步：按下F12,然后刷新网页</p><br>
+        <p style="margin-left: 10%">第四步：如下图所示，把cookie的值复制到我们的输入框内</p><br>
+         <img style="margin-left: 10%;width: 70%" src="../../../../static/index/img/lagou_cookie.jpg">
 </form>
 </div>
 
@@ -85,7 +100,8 @@
                $.get(url, {
                 'work_name': data.field.title,
                 'type': data.field.type,
-                'record_name': data.field.record_name
+                'record_name': data.field.record_name,
+                'cookie':data.field.cookie
             }, function (data) {
                 if(data==1){
                     // layer.close(layer.load(3));
@@ -94,6 +110,8 @@
                     layer.msg('爬取异常，请稍后重试',{icon: 2});
                 }else if(data==-1){
                     layer.msg('有任务在进行',{icon: 2});
+                }else if(data==-3){
+                    layer.msg('请填充cookie',{icon: 2});
                 }
 
             });
