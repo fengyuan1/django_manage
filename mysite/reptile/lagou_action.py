@@ -26,11 +26,11 @@ def grad_action(request):
     status = models.Data.objects.filter(category_id=type)
     if (status[0].status == 0):
         return HttpResponse(-1)
-    models.Data.objects.filter(category_id=type).update(status=0)
 
     if(cookie==''):
         return HttpResponse(-3)
 
+    models.Data.objects.filter(category_id=type).update(status=0)
     # 插入查找岗位信息记录
     record = Record(record_name=record_name, date=str(int(time.time())), recruit_type=type)
     record.save()
@@ -127,7 +127,7 @@ def lagou_action(i,work_name,cate_id,record_id,cookie):
                 , record_id=record_id, work_type_id=cate_id, company=company, year=year,district=district,salary=salary_money)
                 lagou_data.save()
             print(data)
-    except IOError:
+    except BaseException:
         models.Data.objects.filter(category_id=2).update(status=1)
         return 0
 
